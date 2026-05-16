@@ -28,24 +28,29 @@ Each skill has a matching `.md` file with argument docs and return shape.
 ## Quick reference
 
 ```bash
-# List all tasks
+# List tasks
 python todoist/get_tasks.py
-
-# Filter tasks (Todoist filter syntax)
 python todoist/get_tasks.py --filter "today"
 python todoist/get_tasks.py --filter "p4 & overdue"
 python todoist/get_tasks.py --project <project_id> --limit 10
 
-# Create a task
+# Create tasks
 python todoist/create_task.py "Buy milk" --priority 2 --due "tomorrow"
-python todoist/create_task.py "Sub-task" --parent <task_id>
+python todoist/create_task.py "Sub-task" --parent <task_id>   # creates subtask
 
-# Update a task
+# Update / complete
 python todoist/update_task.py <task_id> --priority 4 --due "today"
-
-# Complete a task
 python todoist/close_task.py <task_id>
 
-# List projects (to get project ids)
-python todoist/get_projects.py
+# Move tasks between sections / projects
+python todoist/get_projects.py                                 # find project ids
+python todoist/get_sections.py <project_id>                   # find section ids
+python todoist/create_section.py <project_id> "Sprint 2"      # new section
+python todoist/move_task.py <task_id> --section <section_id>  # move to section
+python todoist/move_task.py <task_id> --project <project_id>  # move to project root
+python todoist/move_task.py <task_id> --parent <task_id>      # nest as subtask
+
+# Comments
+python todoist/get_comments.py <task_id>
+python todoist/add_comment.py <task_id> "Looks good, shipping tomorrow"
 ```
