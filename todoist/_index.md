@@ -12,9 +12,11 @@
 - add_comment:    post a comment on a task (markdown supported; no threading in Todoist)
 
 ## Projects & sections
-- get_projects:   list all projects — ids used by get_tasks / create_task / move_task
-- get_sections:   list sections in a project — ids used by move_task / create_task
-- create_section: create a new section inside a project
+- get_projects:    list all projects — ids used by get_tasks / create_task / move_task
+- browse_project:  full project view: sections + tasks grouped (one call)
+- create_project:  create a project with optional color, parent, or favorite flag
+- get_sections:    list sections in a project — ids used by move_task / create_task
+- create_section:  create a new section inside a project
 
 ## Notes
 - Subtasks: use create_task --parent <id>  or  move_task --parent <id>

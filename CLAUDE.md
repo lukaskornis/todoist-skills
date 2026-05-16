@@ -28,8 +28,13 @@ Each skill has a matching `.md` file with argument docs and return shape.
 ## Quick reference
 
 ```bash
+# List / browse projects
+python todoist/get_projects.py                                 # list all
+python todoist/browse_project.py <project_id>                 # full view: sections + tasks
+python todoist/create_project.py "My Project" --color red     # new project
+python todoist/create_project.py "Sub" --parent <project_id> --favorite
+
 # List tasks
-python todoist/get_tasks.py
 python todoist/get_tasks.py --filter "today"
 python todoist/get_tasks.py --filter "p4 & overdue"
 python todoist/get_tasks.py --project <project_id> --limit 10
