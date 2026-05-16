@@ -1,5 +1,5 @@
 """Move a task to a different section, project, or parent. Usage: python move_task.py <task_id> [--section ID] [--project ID] [--parent ID]"""
-import json, sys, os
+import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 from _lib import post, trim_task, require
 
@@ -23,8 +23,9 @@ def main():
     if not payload:
         print("ERROR: Provide --section, --project, or --parent"); sys.exit(1)
 
-    result = post(f"/tasks/{task_id}/move", payload)
-    print(json.dumps(trim_task(result), indent=2))
+    t = trim_task(post(f"/tasks/{task_id}/move", payload))
+    dest = " ".join(f"{k}={v}" for k, v in payload.items())
+    print(f"moved {t['id']} {dest}")
 
 if __name__ == "__main__":
     main()

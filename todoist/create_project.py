@@ -1,17 +1,6 @@
-"""Create a Todoist project. Usage: python create_project.py <name> [--color COLOR] [--parent ID] [--favorite]"""
-import json, sys, os
+import sys, os
 sys.path.insert(0, os.path.dirname(__file__))
 from _lib import post, require
-
-def _trim(p):
-    return {
-        "id": p["id"],
-        "name": p["name"],
-        "color": p.get("color"),
-        "parent_id": p.get("parent_id"),
-        "is_favorite": p.get("is_favorite", False),
-        "is_inbox": p.get("inbox_project", False),
-    }
 
 def main():
     require(2, "python create_project.py <name> [--color COLOR] [--parent ID] [--favorite]")
@@ -30,7 +19,8 @@ def main():
         else:
             print(f"ERROR: Unknown flag: {flag}"); sys.exit(1)
 
-    print(json.dumps(_trim(post("/projects", payload)), indent=2))
+    p = post("/projects", payload)
+    print(f"{p['id']} {p['name']}")
 
 if __name__ == "__main__":
     main()
