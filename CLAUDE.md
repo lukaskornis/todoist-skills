@@ -20,6 +20,19 @@ python todoist/<skill>.py [args]
 
 All scripts print JSON to stdout. Errors are prefixed with `ERROR:` and exit with code 1.
 
+## Skill.md format
+
+```
+# note only for real gotchas
+python <skill>.py <req_arg> [opt_arg]
+arg:type  description (omit when obvious from name)
+→ return fields
+! ErrorCondition
+```
+
+Legend (defined once here, not repeated in skill files):
+`<arg>`=required  `[arg]`=optional  `→`=returns  `!`=errors
+
 ## Available skills
 
 See [`todoist/_index.md`](./todoist/_index.md) for the full list and signatures.
