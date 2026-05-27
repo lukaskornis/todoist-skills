@@ -1,7 +1,8 @@
 # <arg>=required  [arg]=optional  →=returns  #=note
 
 ## Tasks
-- get_tasks:      list active tasks; filter by project, Todoist filter string, or limit
+- get_tasks:          list active tasks; filter by project, Todoist filter string, or limit
+- get_section_tasks:  list active tasks in a specific section by section_id
 - create_task:    create a task; use --parent to make it a subtask immediately
 - close_task:     mark a task complete by id
 - update_task:    patch content, priority, due, description, or labels on an existing task
